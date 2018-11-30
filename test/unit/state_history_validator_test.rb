@@ -3,7 +3,7 @@ require 'test_helper'
 module ActiveModel
   module Validations
 
-    class StateHistoryValidatorTest < ActiveSupport::TestCase
+    class StateHistoryValidatorTest < Test::Unit::TestCase
       context "A perfectly valid state history" do
         setup do
           now = DateTime.new(2011, 2, 3, 5, 8, 13)
@@ -274,7 +274,7 @@ module ActiveModel
         end_attr = options[:end] || :end
         sort_dir = options[:sort_dir] || "ASC"
 
-        order_by = options[:order] || 
+        order_by = options[:order] ||
           "#{start_attr} #{sort_dir}, ISNULL(#{end_attr}) #{sort_dir}, #{end_attr} #{sort_dir}"
 
         state_history.stubs(:order).with(order_by).returns(state_history)

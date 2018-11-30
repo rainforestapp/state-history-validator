@@ -3,7 +3,7 @@ require 'test_helper'
 module ActiveModel
   module Validations
 
-    class StateHistoryEntryValidatorTest < ActiveSupport::TestCase
+    class StateHistoryEntryValidatorTest < Test::Unit::TestCase
       context "An \"perfect\" account state history entry" do
         setup do
           @now = DateTime.new(2011, 2, 3, 5, 8, 13)

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HelperMethodsTest < ActiveSupport::TestCase
+class HelperMethodsTest < Test::Unit::TestCase
   context "The helper methods on a perfectly valid state history" do
     setup do
       now = DateTime.new(2011, 2, 3, 5, 8, 13)

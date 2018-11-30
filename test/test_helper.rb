@@ -1,8 +1,10 @@
 require 'test/unit'
-require 'shoulda'
 require 'mocha'
-require 'mocha/integration/test_unit'
+require 'mocha/test_unit'
+require 'active_support'
 require 'active_support/core_ext'
 require 'active_model'
+
+require 'shoulda'
 
 require 'state_validations'
