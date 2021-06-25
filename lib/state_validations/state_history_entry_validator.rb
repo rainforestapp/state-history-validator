@@ -23,7 +23,7 @@ module ActiveModel
         start = record[@start]
         _end  = record[@end]
         if start == _end
-          record.errors[:base] << "Start time (#{start}) is equal to end (#{_end})"
+          record.errors.add(:base, "Start time (#{start}) is equal to end (#{_end})")
         end
       end
 
@@ -31,7 +31,7 @@ module ActiveModel
         start = record[@start]
         _end  = record[@end]
         if !_end.blank? && start > _end
-          record.errors[:base] << "Start time (#{start}) is later than end time (#{_end})"
+          record.errors.add(:base, "Start time (#{start}) is later than end time (#{_end})")
         end
       end
     end
