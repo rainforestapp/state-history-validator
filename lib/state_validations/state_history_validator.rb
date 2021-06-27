@@ -56,7 +56,7 @@ module ActiveModel
         last = history.last
 
         if !last[@end].nil?
-          errors[:base] << "no nil ending"
+          errors.add(:base, "no nil ending")
           return false
         end
 
@@ -65,7 +65,7 @@ module ActiveModel
 
       def no_self_transitions?(this_entry, next_entry, errors)
         if matches?(this_entry, next_entry) && this_entry[@end] == next_entry[@start]
-          errors[:base] << "self-transition found"
+          errors.add(:base, "self-transition found")
           return false
         end
 
@@ -74,7 +74,7 @@ module ActiveModel
 
       def no_gaps?(this_entry, next_entry, errors)
         if !this_entry[@end].nil? && next_entry[@start] > this_entry[@end]
-          errors[:base] << "Gap found"
+          errors.add(:base, "Gap found")
           return false
         end
 
@@ -83,7 +83,7 @@ module ActiveModel
 
       def no_overlaps?(this_entry, next_entry, errors)
         if !this_entry[@end].nil? && next_entry[@start] < this_entry[@end]
-          errors[:base] << "Overlap found"
+          errors.add(:base, "Overlap found")
           return false
         end
 
@@ -93,7 +93,7 @@ module ActiveModel
       # This doesn't get invoked on the very last entry, so we should be safe
       def no_intervening_nils?(this_entry, errors)
         if this_entry[@end].blank?
-          errors[:base] << "Found nil end in middle of state history"
+          errors.add(:base, "Found nil end in middle of state history")
           return false
         end
 
